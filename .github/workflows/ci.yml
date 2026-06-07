@@ -5,8 +5,8 @@ on:
 env:
   CARGO_TERM_COLOR: always
 jobs:
-  check:
-    name: Check & Lint
+  check_rust:
+    name: Check & Lint Rust
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,6 +14,23 @@ jobs:
       - run: rustup target add wasm32-unknown-unknown
       - run: cargo fmt --check
       - run: cargo clippy --target wasm32-unknown-unknown -- -D warnings
+
+  lint_html:
+    name: HTML/CSS Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - run: npm install -g prettier cspell vnu-jar
+      - run: prettier --check "**/*.html" "**/*.css"
+      - run: cspell "**/*.html"
+      - run: vnu --errors-only **/*.html
 
   test:
     name: Test (native)
