@@ -6,14 +6,15 @@ env:
   CARGO_TERM_COLOR: always
 jobs:
   check_rust:
-    name: Check & Lint Rust
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: Swatinem/rust-cache@v2
-      - run: rustup target add wasm32-unknown-unknown
-      - run: cargo fmt --check
-      - run: cargo clippy --target wasm32-unknown-unknown -- -D warnings
+      name: Check & Lint Rust
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: Swatinem/rust-cache@v2
+        - run: rustup target add wasm32-unknown-unknown
+        - run: cargo fmt --check
+        - run: cargo clippy --manifest-path frontend/Cargo.toml --target wasm32-unknown-unknown -- -D warnings
+        - run: cargo clippy --manifest-path backend/Cargo.toml -- -D warnings
 
   lint_html:
     name: HTML/CSS Lint
