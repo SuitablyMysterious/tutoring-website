@@ -15,7 +15,7 @@ jobs:
         - run: cargo fmt --check
         - run: cargo clippy --manifest-path frontend/Cargo.toml --target wasm32-unknown-unknown -- -D warnings
         - run: cargo clippy --manifest-path backend/Cargo.toml -- -D warnings
-
+        - run: cargo clippy --manifest-path common/Cargo.toml -- -D warnings
   lint_html:
     name: HTML/CSS Lint
     runs-on: ubuntu-latest
