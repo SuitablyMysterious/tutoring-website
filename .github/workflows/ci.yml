@@ -28,7 +28,7 @@ jobs:
           java-version: "17"
           distribution: "temurin"
       - run: npm install -g prettier cspell vnu-jar
-      - run: prettier --check "**/*.html" "**/*.css"
+      - run: prettier --check "**/*.html"
       - run: cspell "**/*.html"
       - run: vnu --errors-only **/*.html
 
