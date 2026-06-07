@@ -17,6 +17,7 @@ repos:
     hooks:
       - id: cspell
         files: \.(html)$
+
   - repo: local
     hooks:
       - id: cargo-fmt

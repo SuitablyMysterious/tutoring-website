@@ -1,0 +1,13 @@
+[package]
+name = "tutoring-website-frontend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+console_error_panic_hook = "0.1.7"
+gloo-net = { version = "0.7.0", features = ["http", "json"] }
+icondata = { version = "0.7.0", features = ["lucide"] }
+leptos = { version = "0.8.19", features = ["csr"] }
+leptos_icons = "0.7.1"
+leptos_meta = "0.8.6"
+leptos_router = "0.8.13"
