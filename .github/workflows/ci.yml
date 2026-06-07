@@ -50,3 +50,4 @@ jobs:
       - name: Install trunk
         run: cargo install trunk
       - run: trunk build --release
+        working-directory: frontend
