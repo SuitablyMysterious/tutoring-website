@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: Swatinem/rust-cache@v2
       - run: cargo test --workspace
+      - run: cargo test -p tutoring-website-frontend --features ssr
 
   build:
     name: cargo-leptos Build

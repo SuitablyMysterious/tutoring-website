@@ -1,10 +1,11 @@
-# Design tokens. Every value here becomes a CSS custom property:
-#   [colors] primary = "#1d3557"  ->  --color-primary: #1d3557;
-#   [fonts]  body = "..."         ->  --font-body: ...;
+# Design tokens. Every value here becomes a CSS custom property, with the
+# section name used verbatim as the variable prefix:
+#   [color] primary = "#1d3557"  ->  --color-primary: #1d3557;
+#   [font]  body = "..."         ->  --font-body: ...;
 # Components must only ever reference the generated variables, never raw
 # values, so swapping the theme is an edit here + rebuild.
 
-[colors]
+[color]
 primary = "#1d3557"
 primary-contrast = "#ffffff"
 accent = "#e63946"
@@ -14,7 +15,7 @@ text = "#1d1d1f"
 text-muted = "#55565a"
 border = "#d8dde2"
 
-[fonts]
+[font]
 heading = "Georgia, 'Times New Roman', serif"
 body = "system-ui, -apple-system, 'Segoe UI', sans-serif"
 

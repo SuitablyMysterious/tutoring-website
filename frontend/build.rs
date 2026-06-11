@@ -1,6 +1,6 @@
 //! Generates `style/main.css` from the theme tokens + handwritten base styles.
 //!
-//! `theme/theme.toml` -> `:root { --<section-singular>-<key>: <value>; ... }`
+//! `theme/theme.toml` -> `:root { --<section>-<key>: <value>; ... }`
 //! concatenated with `style/base.css`. The output is gitignored; edit the
 //! theme or base.css, never main.css.
 
@@ -25,13 +25,11 @@ fn main() {
         let table = values
             .as_table()
             .unwrap_or_else(|| panic!("[{section}] must be a table of string values"));
-        // "colors" -> "color" so variables read as --color-primary.
-        let prefix = section.strip_suffix('s').unwrap_or(section);
         for (key, value) in table {
             let value = value
                 .as_str()
                 .unwrap_or_else(|| panic!("{section}.{key} must be a string"));
-            writeln!(css, "  --{prefix}-{key}: {value};").unwrap();
+            writeln!(css, "  --{section}-{key}: {value};").unwrap();
         }
     }
     css.push_str("}\n\n");
