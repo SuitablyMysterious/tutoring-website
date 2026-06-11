@@ -37,3 +37,5 @@ jobs:
       - name: Install cargo-leptos
         run: cargo install cargo-leptos --locked
       - run: cargo leptos build --release
+      - name: Generated main.css must be committed up to date
+        run: git diff --exit-code -- frontend/style/main.css
