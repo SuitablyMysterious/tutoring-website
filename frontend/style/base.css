@@ -1,0 +1,142 @@
+/* Base structural styles. Reference theme tokens (var(--...)) only —
+   raw colour/font/size values belong in theme/theme.toml. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-surface);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+.container {
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-md);
+}
+
+/* --- nav --- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav ul {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- hero --- */
+.hero {
+  padding-block: var(--spacing-xl);
+  background: var(--color-surface-alt);
+  text-align: center;
+}
+
+.hero .eyebrow {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+}
+
+.hero em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.hero .stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/* --- buttons / ctas --- */
+.button {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  text-decoration: none;
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+/* --- sections & cards --- */
+.section {
+  padding-block: var(--spacing-lg);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--spacing-md);
+}
+
+.card {
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+/* --- enquiry form --- */
+.enquiry-form {
+  display: grid;
+  gap: var(--spacing-sm);
+  max-width: 32rem;
+}
+
+.enquiry-form input,
+.enquiry-form textarea {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+/* Honeypot: hidden from humans, present for bots. */
+.enquiry-form .hp-field {
+  position: absolute;
+  left: -9999px;
+}
+
+.form-status.error {
+  color: var(--color-accent);
+}
+
+/* --- footer --- */
+.site-footer {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}

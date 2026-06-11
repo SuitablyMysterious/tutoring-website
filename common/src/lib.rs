@@ -1,14 +1,16 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+//! Shared DTOs used by both the frontend islands and the backend API.
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+use serde::{Deserialize, Serialize};
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+/// Payload for `POST /api/enquiry`.
+///
+/// `website` is a honeypot field: rendered invisibly in the form and left
+/// empty by humans. Bots that fill it get a fake-success response.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct EnquiryRequest {
+    pub name: String,
+    pub email: String,
+    pub message: String,
+    #[serde(default)]
+    pub website: String,
 }

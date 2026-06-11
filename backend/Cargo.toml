@@ -4,13 +4,18 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-axum = "0.8.9"
-leptos = { version = "0.8.19", features = ["ssr"] }
+axum = { version = "0.8.9", features = ["macros"] }
+common = { path = "../common" }
+dotenvy = "0.15.7"
+frontend = { package = "tutoring-website-frontend", path = "../frontend", features = [
+    "ssr",
+] }
+leptos = { version = "0.8.19", features = ["ssr", "islands"] }
 leptos_axum = "0.8.9"
-serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.150"
-sqlx = { version = "0.9.0", features = ["runtime-tokio", "sqlite", "macros"] }
+sqlx = { version = "0.8.3", features = ["runtime-tokio", "sqlite", "macros"] }
 tokio = { version = "1.52.3", features = ["full"] }
-tower-http = { version = "0.6.11", features = ["cors", "fs", "trace"] }
+tower-http = { version = "0.6.11", features = ["trace"] }
 tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+uuid = { version = "1.23.2", features = ["v4"] }

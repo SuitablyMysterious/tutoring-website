@@ -3,11 +3,28 @@ name = "tutoring-website-frontend"
 version = "0.1.0"
 edition = "2024"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
-console_error_panic_hook = "0.1.7"
-gloo-net = { version = "0.7.0", features = ["http", "json"] }
-icondata = { version = "0.7.0", features = ["lucide"] }
+common = { path = "../common" }
 leptos = { version = "0.8.19", features = ["islands"] }
-leptos_icons = "0.7.1"
 leptos_meta = "0.8.6"
 leptos_router = "0.8.13"
+
+# wasm-only: pulled in by the `hydrate` feature.
+console_error_panic_hook = { version = "0.1.7", optional = true }
+gloo-net = { version = "0.7.0", features = ["http", "json"], optional = true }
+wasm-bindgen = { version = "0.2", optional = true }
+
+[features]
+hydrate = [
+    "leptos/hydrate",
+    "dep:console_error_panic_hook",
+    "dep:gloo-net",
+    "dep:wasm-bindgen",
+]
+ssr = ["leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr"]
+
+[build-dependencies]
+toml = "0.8"

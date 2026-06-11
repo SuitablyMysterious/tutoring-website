@@ -1,0 +1,31 @@
+# Design tokens. Every value here becomes a CSS custom property:
+#   [colors] primary = "#1d3557"  ->  --color-primary: #1d3557;
+#   [fonts]  body = "..."         ->  --font-body: ...;
+# Components must only ever reference the generated variables, never raw
+# values, so swapping the theme is an edit here + rebuild.
+
+[colors]
+primary = "#1d3557"
+primary-contrast = "#ffffff"
+accent = "#e63946"
+surface = "#ffffff"
+surface-alt = "#f1faee"
+text = "#1d1d1f"
+text-muted = "#55565a"
+border = "#d8dde2"
+
+[fonts]
+heading = "Georgia, 'Times New Roman', serif"
+body = "system-ui, -apple-system, 'Segoe UI', sans-serif"
+
+[spacing]
+xs = "0.25rem"
+sm = "0.5rem"
+md = "1rem"
+lg = "2rem"
+xl = "4rem"
+
+[radius]
+sm = "4px"
+md = "8px"
+lg = "16px"
