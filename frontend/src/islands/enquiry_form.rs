@@ -40,15 +40,27 @@ pub fn EnquiryForm() -> impl IntoView {
         });
     };
 
+    let field = "rounded-sm border border-border p-sm";
+
     view! {
-        <form class="enquiry-form" on:submit=on_submit>
-            <label>"Name" <input type="text" bind:value=name required /></label>
-            <label>"Email" <input type="email" bind:value=email required /></label>
-            <label>"Message" <textarea bind:value=message required></textarea></label>
+        <form class="enquiry-form grid max-w-lg gap-sm" on:submit=on_submit>
+            <label class="grid gap-xs">
+                "Name" <input type="text" class=field bind:value=name required />
+            </label>
+            <label class="grid gap-xs">
+                "Email" <input type="email" class=field bind:value=email required />
+            </label>
+            <label class="grid gap-xs">
+                "Message" <textarea class=field bind:value=message required></textarea>
+            </label>
             <label class="hp-field" aria-hidden="true">
                 "Website" <input type="text" bind:value=website tabindex="-1" autocomplete="off" />
             </label>
-            <button class="button" type="submit" disabled=move || status.get() == Status::Sending>
+            <button
+                type="submit"
+                class="rounded-md bg-primary px-lg py-sm text-primary-contrast disabled:opacity-50"
+                disabled=move || status.get() == Status::Sending
+            >
                 {move || {
                     if status.get() == Status::Sending { "Sending…" } else { "Send enquiry" }
                 }}
@@ -56,14 +68,13 @@ pub fn EnquiryForm() -> impl IntoView {
             {move || match status.get() {
                 Status::Sent => {
                     Some(
-                        view! { <p class="form-status">"Thanks — your enquiry has been sent."</p> }
-                            .into_any(),
+                        view! { <p>"Thanks — your enquiry has been sent."</p> }.into_any(),
                     )
                 }
                 Status::Failed => {
                     Some(
                         view! {
-                            <p class="form-status error">
+                            <p class="text-accent">
                                 "Sorry — enquiries are currently unavailable. Please email directly instead."
                             </p>
                         }

@@ -25,9 +25,3 @@ hydrate = [
     "dep:wasm-bindgen",
 ]
 ssr = ["leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr"]
-
-[build-dependencies]
-toml = "0.8"
-
-[dev-dependencies]
-toml = "0.8"

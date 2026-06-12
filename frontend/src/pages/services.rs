@@ -10,7 +10,7 @@ pub fn ServicesPage() -> impl IntoView {
         <Title text=SERVICES_PAGE.page_title />
         <Section title=SERVICES_PAGE.heading>
             <p>{SERVICES_PAGE.intro}</p>
-            <div class="card-grid">
+            <div class="grid gap-md grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]">
                 {SERVICES
                     .iter()
                     .map(|service| view! { <ServiceCard service=service /> })

@@ -37,5 +37,12 @@ jobs:
       - name: Install cargo-leptos
         run: cargo install cargo-leptos --locked
       - run: cargo leptos build --release
-      - name: Generated main.css must be committed up to date
-        run: git diff --exit-code -- frontend/style/main.css
+      - name: Built stylesheet contains token-derived utilities
+        # Tailwind silently skips unknown utilities, so a renamed @theme
+        # token would otherwise ship as missing styles without failing CI.
+        run: |
+          css=target/site/pkg/tutoring-website.css
+          test -s "$css" || { echo "built stylesheet missing or empty"; exit 1; }
+          for cls in bg-primary text-primary-contrast bg-surface-alt gap-md py-xl rounded-md font-heading hp-field; do
+            grep -q -- "$cls" "$css" || { echo "missing utility '$cls' in built CSS"; exit 1; }
+          done

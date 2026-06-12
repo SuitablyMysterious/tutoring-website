@@ -11,9 +11,6 @@ repos:
     hooks:
       - id: prettier
         types_or: [html, css]
-        # generated file, also in .prettierignore — must be excluded here too
-        # or prettier errors with "no files matching the given patterns"
-        exclude: ^frontend/style/main\.css$
 
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v8.13.1

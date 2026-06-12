@@ -18,7 +18,7 @@ pub fn HomePage() -> impl IntoView {
             secondary_cta=HOME.secondary_cta
         />
         <Section title=HOME.services_heading>
-            <div class="card-grid">
+            <div class="grid gap-md grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]">
                 {SERVICES
                     .iter()
                     .map(|service| view! { <ServiceCard service=service /> })

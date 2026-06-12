@@ -16,7 +16,8 @@ lib-package = "tutoring-website-frontend"
 
 site-root = "target/site"
 site-pkg-dir = "pkg"
-style-file = "frontend/style/main.css"
+# cargo-leptos downloads the Tailwind v4 standalone CLI automatically.
+tailwind-input-file = "frontend/style/main.css"
 assets-dir = "frontend/assets"
 site-addr = "127.0.0.1:3070"
 reload-port = 3001
@@ -24,6 +25,3 @@ reload-port = 3001
 bin-features = []
 lib-features = ["hydrate"]
 lib-profile-release = "wasm-release"
-
-# Rebuild styles when theme tokens change during `cargo leptos watch`.
-watch-additional-files = ["frontend/theme"]
